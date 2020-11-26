@@ -245,6 +245,7 @@ namespace Mr.TSummative1stProject
             this.Controls.Add(this.burgerAmountlabel);
             this.Controls.Add(this.receiptLabel);
             this.Controls.Add(this.Burgertitle);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "form1";
             this.Text = "BestBurgerInTown";
             this.ResumeLayout(false);
