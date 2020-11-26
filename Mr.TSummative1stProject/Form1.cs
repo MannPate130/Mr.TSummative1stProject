@@ -29,8 +29,7 @@ namespace Mr.TSummative1stProject
         int numberdrinks;
         double subtotal;
         double total;
-        int tendered;
-        int tenderedamount;
+        double tenderedamount;
         double change;
         double totaltax = 1.13;
         
