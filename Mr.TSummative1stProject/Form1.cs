@@ -1,6 +1,6 @@
 ﻿/* Date: November 26, 2020
  * Author: Mann Patel
- * Purpose: Cash Register For Restaurant
+ * Description: Cash Register Program 
  */
 
 using System;
@@ -113,18 +113,37 @@ namespace Mr.TSummative1stProject
         {
                 // Receipt printer sound
                SoundPlayer cashregister = new SoundPlayer(Properties.Resources.CashRegisterSound);
-               cashregister.PlaySync();
-                // Text shown on receipt
-               receiptLabel.Text = $"             Best Burgers in Town INC." +
-                $"\n\nBurgers    x{numberburgers}                              @ {numberburgers * burger}" +
-                $"\n\nFries     x{numberfries}                                  @ {numberfries * fries}" +
-                $"\n\nDrinks   x{numberdrinks}                                 @ {numberdrinks * drinks}" +
-                $"\n\nSubtotal                                        {subtotal.ToString("C")}" +
-                $"\nTax                                                {tax.ToString("C")}" +
-                $"\nTotal                                              {total.ToString("C")}" +
-                $"\n\nTendered                                     {tenderedamount.ToString("C")}" +
-                $"\nChange                                         {change.ToString("C")}" +
-                $"\n\n       Thank You! Have an Amazing Day!";
+               cashregister.Play();
+            // Text shown on receipt
+               receiptLabel.Text = $"             Best Burgers in Town INC.";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\nBurgers    x{numberburgers}                              @ {numberburgers * burger}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\nFries     x{numberfries}                                  @ {numberfries * fries}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\nDrinks   x{numberdrinks}                                 @ {numberdrinks * drinks}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\nSubtotal                                        {subtotal.ToString("C")}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\nTax                                                {tax.ToString("C")}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\nTotal                                              {total.ToString("C")}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\nTendered                                     {tenderedamount.ToString("C")}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\nChange                                         {change.ToString("C")}";
+               Refresh();
+               Thread.Sleep(200);
+               receiptLabel.Text += $"\n\n       Thank You! Have an Amazing Day!";
+               cashregister.Stop();
         }
 
         private void newOrderbutton_Click(object sender, EventArgs e)
