@@ -24,14 +24,14 @@ namespace Mr.TSummative1stProject
         double fries = 1.25;
         double drinks = 1.00;
         double tax = 0.13;
-        int numberburgers;
-        int numberfries;
-        int numberdrinks;
-        double subtotal;
+        int numberBurgers;
+        int numberFries;
+        int numberDrinks;
+        double subTotal;
         double total;
-        double tenderedamount;
+        double tenderedAmount;
         double change;
-        double totaltax = 1.13;
+        double totalTax = 1.13;
         
 
         public form1()
@@ -44,9 +44,9 @@ namespace Mr.TSummative1stProject
             try
             {
                 // Converting number of burgers into an integer
-                numberburgers = Convert.ToInt32(burgerAmounttextBox.Text);
+                numberBurgers = Convert.ToInt32(burgerAmounttextBox.Text);
                 // Showing that any number of burgers can be entered
-                burgerAmounttextBox.Text = $"{numberburgers}";
+                burgerAmounttextBox.Text = $"{numberBurgers}";
             }
             catch
             {
@@ -57,9 +57,9 @@ namespace Mr.TSummative1stProject
             try
             {
                 // Converting number of fries into an integer
-                numberfries = Convert.ToInt32(friesAmounttextBox.Text);
+                numberFries = Convert.ToInt32(friesAmounttextBox.Text);
                 // Showing that any number of fries can be entered
-                friesAmounttextBox.Text = $"{numberfries}";
+                friesAmounttextBox.Text = $"{numberFries}";
             }
             catch
             {
@@ -70,9 +70,9 @@ namespace Mr.TSummative1stProject
             try
             {
                 // Converting number of drinks into an integer
-                numberdrinks = Convert.ToInt32(drinkAmounttextBox.Text);
+                numberDrinks = Convert.ToInt32(drinkAmounttextBox.Text);
                 // Showing that any number can be entered for the amount of drinks wanted
-                drinkAmounttextBox.Text = $"{numberdrinks}";
+                drinkAmounttextBox.Text = $"{numberDrinks}";
             }
             catch
             {
@@ -81,13 +81,13 @@ namespace Mr.TSummative1stProject
                 return;
             }
                 // Calculation of subtotal amount, tax, and total
-                subtotal = numberburgers * burger + numberfries * fries + numberdrinks * drinks;
-                tax = numberburgers * burger * tax + numberfries * fries *tax + numberdrinks * drinks * tax;
-                total = numberburgers * burger * totaltax + numberfries * fries * totaltax + numberdrinks * drinks * totaltax;
+                subTotal = numberBurgers * burger + numberFries * fries + numberDrinks * drinks;
+                tax = numberBurgers * burger * tax + numberFries * fries * tax + numberDrinks * drinks * tax;
+                total = numberBurgers * burger * totalTax + numberFries * fries * totalTax + numberDrinks * drinks * totalTax;
                 // The amounts for subtotal, tax, and total for order
-                totalAmountlabel.Text = $"SubTotal                  {subtotal}" +
-                    $"\n\nTax                           {tax.ToString(".00")}" +
-                    $"\n\nTotal                        {total.ToString(".00")}";    
+                totalAmountlabel.Text = $"SubTotal                  {subTotal.ToString("C")}" +
+                    $"\n\nTax                          {tax.ToString("C")}" +
+                    $"\n\nTotal                        {total.ToString("C")}";    
         }
 
         private void calculateChangebutton_Click(object sender, EventArgs e)
@@ -95,12 +95,12 @@ namespace Mr.TSummative1stProject
             try 
             {  
                 // Conversion of tendered amount to any integer
-                tenderedamount = Convert.ToInt32(tenderedAmounttextLabel.Text);
-                tenderedAmounttextLabel.Text = $"{tenderedamount}";
+                tenderedAmount = Convert.ToInt32(tenderedAmounttextLabel.Text);
+                tenderedAmounttextLabel.Text = $"{tenderedAmount}";
 
                 // Calculation of change received by customer
-                change = tenderedamount - total;
-                changeLabel.Text = $"Change                                 {change.ToString(".00")}";
+                change = tenderedAmount - total;
+                changeLabel.Text = $"Change                                 {change.ToString("C")}";
             }
             catch
             {
@@ -111,39 +111,42 @@ namespace Mr.TSummative1stProject
 
         private void printReceiptbutton_Click(object sender, EventArgs e)
         {
+            
                 // Receipt printer sound
                SoundPlayer cashregister = new SoundPlayer(Properties.Resources.CashRegisterSound);
                cashregister.Play();
             // Text shown on receipt
                receiptLabel.Text = $"             Best Burgers in Town INC.";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\n\nBurgers    x{numberburgers}                              @ {numberburgers * burger}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\n\nBurgers    x{numberBurgers}                                  @ {numberBurgers * burger}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\n\nFries     x{numberfries}                                  @ {numberfries * fries}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\n\nFries     x{numberFries}                                      @ {numberFries * fries}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\n\nDrinks   x{numberdrinks}                                 @ {numberdrinks * drinks}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\n\nDrinks   x{numberDrinks}                                     @ {numberDrinks * drinks}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\n\nSubtotal                                        {subtotal.ToString("C")}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\n\nSubtotal                                          {subTotal.ToString("C")}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\nTax                                                {tax.ToString("C")}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\nTax                                                  {tax.ToString("C")}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\nTotal                                              {total.ToString("C")}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\nTotal                                                {total.ToString("C")}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\n\nTendered                                     {tenderedamount.ToString("C")}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\n\nTendered                                        {tenderedAmount.ToString("C")}";
                Refresh();
-               Thread.Sleep(200);
-               receiptLabel.Text += $"\nChange                                         {change.ToString("C")}";
+               Thread.Sleep(300);
+               receiptLabel.Text += $"\nChange                                            {change.ToString("C")}";
                Refresh();
-               Thread.Sleep(200);
+               Thread.Sleep(300);
                receiptLabel.Text += $"\n\n       Thank You! Have an Amazing Day!";
-               cashregister.Stop();
+               Refresh();
+               Thread.Sleep(300);
+            cashregister.Stop();
         }
 
         private void newOrderbutton_Click(object sender, EventArgs e)
@@ -160,12 +163,13 @@ namespace Mr.TSummative1stProject
                fries = 0;
                drinks = 0;
                tax = 0;
-               totaltax = 0;
+               totalTax = 0;
                burger = 3.75;
                fries = 1.25;
                drinks = 1.00;
                tax = 0.13;
-               totaltax = 1.13;
+               totalTax = 1.13;
+          
         }
     }
 }
